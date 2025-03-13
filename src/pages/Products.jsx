@@ -121,7 +121,8 @@ function Products() {
 
           <div className="col-md-9 col-lg-10 p-3"style={{ marginLeft: '16.6667%' ,backgroundColor:'#B3C8CF'}}>
             
-            <h1 className="mb-3" style={{marginTop:'100px',marginLeft:'10px'}}>Product List</h1>
+          <h1 className="text-center rounded shadow" style={{ backgroundColor: '#205781', color: "white", marginTop: '70px' }}> Product List</h1>
+          
 
             <div className="mb-3" style={{border:"2px solid  #002d62", borderRadius: "10px", width: "90%",marginLeft:'10px' }}>
             <input 
@@ -226,7 +227,7 @@ function Products() {
                       />
                     </div>
 
-                    {/* Product Name */}
+                   
                     <h6 style={{ 
                       fontSize: '1rem', 
                       fontWeight: '600', 
@@ -245,7 +246,7 @@ function Products() {
                       </a>
                     </h6>
 
-                    {/* Product Info */}
+                    
                     <div style={{ fontSize: '0.85rem', color: '#6B7280', lineHeight: '1.5' }}>
                       <div><strong>SKU:</strong> {product.sku}</div>
                       <div><strong>Category:</strong> {product.category}</div>
@@ -253,7 +254,7 @@ function Products() {
                       <div><strong>Stock:</strong> {product.inStock}</div>
                     </div>
 
-                    {/* Actions */}
+                  
                     <div className="d-flex justify-content-center gap-2">
                       <button 
                         className="btn btn-sm" 

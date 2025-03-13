@@ -79,7 +79,7 @@ function StockIn() {
 
     return (
         <div className="d-flex flex-column min-vh-100" style={{ backgroundColor: 'white', backgroundImage: `url(/img/14.png)`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', fontFamily: "'Poppins', sans-serif" }}>
-            {/* Fixed Header */}
+            
             <nav className="text-white fixed-top" style={{ backgroundColor: '#E0F2F7', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)', border: '1px solid white', zIndex: 1 }}>
                 <div className="container-fluid">
                     <img src="/img/fpop-logo.png" alt="Logo" width="120" height="auto" className="d-inline-block align-text-top" />
@@ -87,7 +87,7 @@ function StockIn() {
             </nav>
 
             <div className="d-flex flex-grow-1 mt-5">
-                {/* Fixed Sidebar */}
+               \
                 <div className="col-lg-2 p-3 position-fixed" style={{ top: '56px', bottom: '0', backgroundColor: '#E0F2F7', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)', height: 'calc(100vh - 56px)' }}>
                     <ul className="nav flex-column">
                         <li className="nav-item mb-2">
@@ -136,25 +136,24 @@ function StockIn() {
                                     <div className="card-body p-3" style={{backgroundColor:'#F8FAFC'}}>
                                         <form onSubmit={handleStockInSubmit}>
                                             <div className="row">
-                                                {/* Product Name */}
+                                              
                                                 <div className="col-md-6 col-sm-14 mb-3">
                                                     <label htmlFor="productName" className="form-label">Product Name</label>
                                                     <input type="text" className="form-control form-control-sm" id="productName" value={productName} onChange={(e) => setProductName(e.target.value)} required style={{ height: '40px',boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)' ,border:'2px solid  #002d62 ' }}/>
                                                 </div>
 
-                                                {/* SKU */}
+                                               
                                                 <div className="col-md-6 col-sm-12 mb-3">
                                                     <label htmlFor="sku" className="form-label">SKU</label>
                                                     <input type="text" className="form-control form-control-sm" id="sku" value={sku} onChange={(e) => setSKU(e.target.value)} required style={{ height: '40px' ,boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)' ,border:'2px solid  #002d62 '}}/>
                                                 </div>
 
-                                                {/* Quantity */}
                                                 <div className="col-md-6 col-sm-12 mb-3">
                                                     <label htmlFor="quantity" className="form-label">Quantity</label>
                                                     <input type="number" className="form-control form-control-sm" id="quantity" value={quantity} onChange={(e) => setQuantity(e.target.value)} required  style={{ height: '40px',boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)' ,border:'2px solid  #002d62 ' }}/>
                                                 </div>
 
-                                                {/* Category */}
+                                                
                                                 <div className="col-md-6 col-sm-12 mb-3">
                                                     <label htmlFor="category" className="form-label">Category</label>
                                                     <select
@@ -169,32 +168,29 @@ function StockIn() {
                                                     </select>
                                                 </div>
 
-                                                {/* Price */}
                                                 <div className="col-md-6 col-sm-12 mb-3">
                                                     <label htmlFor="price" className="form-label">Price</label>
                                                     <input type="number" className="form-control form-control-sm" id="price" value={price} onChange={(e) => setPrice(e.target.value)} style={{ height: '40px',boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)' ,border:'2px solid  #002d62 ' }}/>
                                                 </div>
 
-                                                {/* Expiration */}
                                                 <div className="col-md-6 col-sm-12 mb-3">
                                                     <label htmlFor="expiration" className="form-label">Expiration Date</label>
                                                     <input type="date" className="form-control form-control-sm" id="expiration" value={expiration} onChange={(e) => setExpiration(e.target.value)} required style={{ height: '40px',boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)' ,border:'2px solid  #002d62 ' }} />
                                                 </div>
 
-                                                {/* Received By */}
+                                               
                                                 <div className="col-md-6 col-sm-12 mb-3">
                                                     <label htmlFor="receivedBy" className="form-label">Received By</label>
                                                     <input type="text" className="form-control form-control-sm" id="receivedBy" value={receivedBy} onChange={(e) => setReceivedBy(e.target.value)} required style={{ height: '40px',boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)' ,border:'2px solid  #002d62 ' }}/>
                                                 </div>
 
-                                                {/* Supplier */}
+                                               
                                                 <div className="col-md-6 col-sm-12 mb-3">
                                                     <label htmlFor="supplier" className="form-label">Supplier</label>
                                                     <input type="text" className="form-control form-control-sm" id="supplier" value={supplier} onChange={(e) => setSupplier(e.target.value)} required style={{ height: '40px',boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)' ,border:'2px solid  #002d62 ' }}/>
                                                 </div>
 
-                                                {/* Additional Info */}
-                                                <div className="col-md-14 col-sm-16 mb-3"> {/* Adjusted width */}
+                                                <div className="col-md-14 col-sm-16 mb-3"> 
                                                     <label htmlFor="additionalInfo" className="form-label">Additional Information</label>
                                                     <textarea className="form-control form-control-sm" id="additionalInfo" value={additionalInfo} onChange={(e) => setAdditionalInfo(e.target.value)} style={{ height: '40px' ,boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)' ,border:'2px solid  #002d62 '}}/>
                                                 </div>
@@ -207,7 +203,7 @@ function StockIn() {
                                 </div>
                             </div>
 
-                            {/* Recent Stock In Section */}
+                          
                             <div className="col-md-12 col-sm-12">
                                 <div className="card shadow-sm">
                                     <div className="card-header  text-white" style={{backgroundColor:'#3674B5'}}>

@@ -9,6 +9,12 @@ import Products from "./pages/Products";
 import StockIn from './pages/Stockin'; 
 import Transfers from './pages/Transfers';
 import Audit from './pages/Audit';
+import OutStock from './pages/OutStock';
+import LowStock from './pages/LowStock';
+import Expiring from './pages/Expiring';
+import Request from './pages/Request';
+
+
 
 
 
@@ -33,6 +39,10 @@ function RouteWithTransitions() {
           <Route path="/stockin" element={<StockIn />} />
           <Route path="/transfers" element={<Transfers />} />
           <Route path="/audit" element={<Audit />} />
+          <Route path="/outstock" element={<OutStock />} />
+          <Route path="/lowstock" element={<LowStock />} />
+          <Route path="/expiring" element={<Expiring />} />
+          <Route path="/request" element={<Request />} />
 
           
 

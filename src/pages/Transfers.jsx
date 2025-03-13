@@ -68,7 +68,7 @@ function Transfers() {
 
     return (
         <div className="d-flex flex-column min-vh-100" style={{ backgroundColor: 'white', backgroundImage: `url(/img/14.png)`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', fontFamily: "'Poppins', sans-serif" }}>
-            {/* Fixed Header */}
+            
             <nav className="text-white fixed-top" style={{ backgroundColor: '#E0F2F7', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)', border: '1px solid white', zIndex: 1 }}>
                 <div className="container-fluid">
                     <img src="/img/fpop-logo.png" alt="Logo" width="120" height="auto" className="d-inline-block align-text-top" />
@@ -76,7 +76,7 @@ function Transfers() {
             </nav>
 
             <div className="d-flex flex-grow-1 mt-5">
-                {/* Fixed Sidebar */}
+              
                 <div className="col-lg-2 p-3 position-fixed" style={{ top: '56px', bottom: '0', backgroundColor: '#E0F2F7', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)', height: 'calc(100vh - 56px)' }}>
                     <ul className="nav flex-column">
                         <li className="nav-item mb-2">
@@ -116,7 +116,7 @@ function Transfers() {
                     <div style={{ backgroundColor: 'white', marginTop: '25px' }}>
                         <h2 className="text-center mb-4 text-dark" style={{ marginTop: '25px' }}>Stock Transfers</h2>
 
-                        {/* Transfer Form */}
+                       
                         <form onSubmit={handleSubmit}>
                             <div className="row mb-3">
                                 <div className="col-md-6">
@@ -179,7 +179,7 @@ function Transfers() {
                         </form>
                     </div>
 
-                    {/* Transfers Table */}
+                    
                     <div className="table-responsive mt-4">
                         <table className="table table-bordered">
                             <thead className="table-dark">

@@ -13,7 +13,7 @@ import {
     Legend 
 } from 'chart.js';
 
-// Chart.js registration
+
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -26,14 +26,13 @@ ChartJS.register(
 function Audit() {
     const navigate = useNavigate();
 
-    // Navigation handlers
     const HomeNavigate = () => navigate('/home');
     const ProductNavigate = () => navigate('/products');
     const StockInNavigate = () => navigate('/stockin');
     const TransferNavigate = () => navigate('/transfers');
     const StockAuditNavigate = () => navigate('/audit');
 
-    // Sample sales data
+ 
     const salesData = {
         labels: ['Product A', 'Product B', 'Product C'],
         datasets: [{
@@ -45,7 +44,6 @@ function Audit() {
         }]
     };
 
-    // Table header style
     const tableHeaderStyle = {
         padding: '10px',
         border: '1px solid #ddd',
@@ -53,7 +51,7 @@ function Audit() {
         fontWeight: 'bold'
     };
 
-    // Function to render table rows
+  
     const renderTableRow = (product, value) => (
         <tr key={product}>
             <td style={tableCellStyle}>{product}</td>
@@ -61,7 +59,6 @@ function Audit() {
         </tr>
     );
 
-    // Table cell style
     const tableCellStyle = {
         padding: '10px',
         border: '1px solid #ddd',
