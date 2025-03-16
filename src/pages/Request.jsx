@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { FaHome, FaBoxOpen, FaExchangeAlt, FaClipboardCheck, FaPowerOff, FaWarehouse } from "react-icons/fa";
+import { FaHome, FaBoxOpen, FaExchangeAlt, FaClipboardCheck, FaPowerOff, FaWarehouse,FaUserCircle,FaTimes } from "react-icons/fa";
 import { ToastContainer, toast } from 'react-toastify';
 import { Modal, Button } from 'react-bootstrap';  
 
 function Request() {
     const navigate = useNavigate();
+     const [showSidebar, setShowSidebar] = useState(false);
+      const toggleSidebar = () => setShowSidebar(!showSidebar);
+      const handleLogout = () => {
+        navigate('/'); 
+      };
 
     const HomeNavigate = () => navigate('/home');
     const ProductNavigate = () => navigate('/products');
@@ -41,15 +46,44 @@ function Request() {
     }, {});
 
     return (
-        <div className="d-flex flex-column min-vh-100" style={{ backgroundColor: 'white', backgroundImage: `url(/img/14.png)`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', fontFamily: "'Poppins', sans-serif" }}>
+        <div className="d-flex flex-column" style={{ height: '100vh',fontFamily: 'Cambria, Cochin, Georgia, Times, serif',
+            color: '#002d62'}}>
+                
             <nav className="text-white fixed-top" style={{ backgroundColor: '#E0F2F7', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)', border: '1px solid white', zIndex: 1 }}>
-                <div className="container-fluid">
-                    <img src="/img/fpop-logo.png" alt="Logo" width="120" height="auto" className="d-inline-block align-text-top" />
-                </div>
+                <div className="container-fluid d-flex justify-content-between align-items-center">
+                    <img src="/img/fpop-logo.png" alt="Logo" width="70" height="70" className="d-inline-block align-text-top" />
+                    <FaUserCircle size={40} color="#000" style={{ cursor: 'pointer' }} onClick={toggleSidebar} />
+                 </div>
             </nav>
 
+           < div className={`position-fixed end-0 h-100  shadow ${showSidebar ? 'translate-x-0' : 'translate-x-100'}`}
+                           style={{
+                             backgroundColor: '#E0F2F7',
+                             top: '69px', 
+                             width: '250px',
+                             transition: 'transform 0.3s ease, opacity 0.3s ease',
+                             zIndex: 1050,
+                             borderLeft: '2px solid #ddd',
+                             display: showSidebar ? 'block' : 'none', 
+                             opacity: showSidebar ? 1 : 0,  }}>
+            
+                      <div className="p-2">
+                          <div className="d-flex justify-content-end"><FaTimes size={24} style={{ cursor: 'pointer' }} onClick={toggleSidebar} /></div>
+                            <h5 className="mt-2 mb-3">Natalie Jenh Alarcon</h5>
+                              <ul className="list-group" style={{backgroundColor: '#E0F2F7'}}>
+                                    <li className="list-group-item" onClick={() => navigate('/profile')} style={{ cursor: 'pointer' }}>View Profile</li>
+                                    <li className="list-group-item" onClick={() => navigate('/edit-profile')} style={{ cursor: 'pointer' }}> Edit Profile</li>
+                                    <li className="list-group-item" onClick={() => navigate('/help')} style={{ cursor: 'pointer' }}>Help</li>
+                                  <li className="list-group-item" onClick={() => navigate('/data-privacy')} style={{ cursor: 'pointer' }}> Data and Privacy</li>
+                                <li className="list-group-item text-danger" onClick={handleLogout} style={{ cursor: 'pointer' }}>Logout</li>
+                              </ul>
+                            </div>
+                        </div>
+
+            
+
             <div className="d-flex flex-grow-1 mt-5">
-                {/* Sidebar */}
+               
                 <div className="col-lg-2 p-3 position-fixed" style={{ top: '56px', bottom: '0', backgroundColor: '#E0F2F7', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)', height: 'calc(100vh - 56px)' }}>
                     <ul className="nav flex-column">
                         <li className="nav-item mb-2">
@@ -85,15 +119,12 @@ function Request() {
                     </ul>
                 </div>
 
-                {/* Main Content */}
-                <main className="col-md-9 col-lg-10 ms-md-auto p-4" style={{ marginLeft: '16.6667%', backgroundColor: '#F9FAFB', minHeight: '85vh', borderRadius: '12px', padding: '24px' }}>
+                <main className="col-md-9 col-lg-10 ms-md-auto p-4" style={{ marginLeft: '16.6667%', backgroundColor: '#B3C8CF', minHeight: '85vh', borderRadius: '12px', padding: '24px' }}>
                     <div className="container py-3">
-                        <h1 className="text-center rounded shadow" style={{ backgroundColor: '#205781', color: "white", marginBottom: '20px' }}>
-                            Stock Requests
-                        </h1>
+                        <h1 className="text-center rounded shadow" style={{ backgroundColor: '#205781', color: "white", marginBottom: '20px',fontSize:"34px" }}>Pending Requests</h1>
 
 
-                        <div className="mt-5">
+                        <div className="mt-3">
                             <div className="row g-4">
                                 {Object.keys(requestCounts).map((type, index) => (
                                     <div key={index} className="col-md-4">

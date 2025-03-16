@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { FaHome, FaBoxOpen, FaBox, FaExchangeAlt, FaClipboardCheck, FaPowerOff, FaWarehouse } from "react-icons/fa";
+import { FaHome, FaBoxOpen, FaExchangeAlt, FaClipboardCheck, FaPowerOff, FaWarehouse,FaUserCircle,FaTimes } from "react-icons/fa";
 
 function Transfers() {
     const navigate = useNavigate();
+
+     const [showSidebar, setShowSidebar] = useState(false);
+              const toggleSidebar = () => setShowSidebar(!showSidebar);
+              const handleLogout = () => {
+                navigate('/'); 
+        };
+        
 
     const HomeNavigate = () => navigate('/home');
     const ProductNavigate = () => navigate('/products');
@@ -67,13 +74,37 @@ function Transfers() {
     };
 
     return (
-        <div className="d-flex flex-column min-vh-100" style={{ backgroundColor: 'white', backgroundImage: `url(/img/14.png)`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', fontFamily: "'Poppins', sans-serif" }}>
-            
+        <div className="d-flex flex-column" style={{ height: '100vh',fontFamily: 'Cambria, Cochin, Georgia, Times, serif',color: '#002d62'}}>            
             <nav className="text-white fixed-top" style={{ backgroundColor: '#E0F2F7', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)', border: '1px solid white', zIndex: 1 }}>
-                <div className="container-fluid">
-                    <img src="/img/fpop-logo.png" alt="Logo" width="120" height="auto" className="d-inline-block align-text-top" />
-                </div>
+               <div className="container-fluid d-flex justify-content-between align-items-center">
+                    <img src="/img/fpop-logo.png" alt="Logo" width="70" height="70" className="d-inline-block align-text-top" />
+                     <FaUserCircle size={40} color="#000" style={{ cursor: 'pointer' }} onClick={toggleSidebar} />
+                 </div>
             </nav>
+
+            <div className={`position-fixed end-0 h-100  shadow ${showSidebar ? 'translate-x-0' : 'translate-x-100'}`}
+                                       style={{
+                                         backgroundColor: '#E0F2F7',
+                                         top: '69px', 
+                                         width: '250px',
+                                         transition: 'transform 0.3s ease, opacity 0.3s ease',
+                                         zIndex: 1050,
+                                         borderLeft: '2px solid #ddd',
+                                         display: showSidebar ? 'block' : 'none', 
+                                         opacity: showSidebar ? 1 : 0,  }}>
+                        
+                                  <div className="p-2">
+                                      <div className="d-flex justify-content-end"><FaTimes size={24} style={{ cursor: 'pointer' }} onClick={toggleSidebar} /></div>
+                                        <h5 className="mt-2 mb-3">Natalie Jenh Alarcon</h5>
+                                          <ul className="list-group" style={{backgroundColor: '#E0F2F7'}}>
+                                                <li className="list-group-item" onClick={() => navigate('/profile')} style={{ cursor: 'pointer' }}>View Profile</li>
+                                                <li className="list-group-item" onClick={() => navigate('/edit-profile')} style={{ cursor: 'pointer' }}> Edit Profile</li>
+                                                <li className="list-group-item" onClick={() => navigate('/help')} style={{ cursor: 'pointer' }}>Help</li>
+                                              <li className="list-group-item" onClick={() => navigate('/data-privacy')} style={{ cursor: 'pointer' }}> Data and Privacy</li>
+                                            <li className="list-group-item text-danger" onClick={handleLogout} style={{ cursor: 'pointer' }}>Logout</li>
+                                          </ul>
+                                        </div>
+                                    </div>
 
             <div className="d-flex flex-grow-1 mt-5">
               
@@ -112,114 +143,251 @@ function Transfers() {
                     </ul>
                 </div>
 
-                <div className="col-md-9 col-lg-10 p-3" style={{ marginLeft: '16.6667%', backgroundColor: '#B3C8CF' }}>
-                    <div style={{ backgroundColor: 'white', marginTop: '25px' }}>
-                        <h2 className="text-center mb-4 text-dark" style={{ marginTop: '25px' }}>Stock Transfers</h2>
+        <div className="col-md-9 col-lg-10 p-4" style={{ marginLeft: '16.6667%',  backgroundColor: '#B3C8CF'}}>
+            <div className="card shadow-sm" style={{ marginTop: '20px' }}>
+                <h1 className="rounded-top" style={{ backgroundColor: '#205781', color: "white", fontSize:'35px' }}>
+                    Transfer Products Form
+                </h1>
 
-                       
-                        <form onSubmit={handleSubmit}>
-                            <div className="row mb-3">
-                                <div className="col-md-6">
-                                    <input
-                                        type="text"
-                                        name="product"
-                                        className="form-control"
-                                        placeholder="Product Name"
-                                        value={formData.product}
-                                        onChange={handleChange}
-                                        required
-                                        style={{border:"2px solid  #002d62",borderRadius: "10px",marginLeft:'10px',width: '90%' }}
-                                    />
-                                </div>
-                                <div className="col-md-6">
-                                    <input
-                                        type="text"
-                                        name="from"
-                                        className="form-control"
-                                        placeholder="From (Source)"
-                                        value={formData.from}
-                                        onChange={handleChange}
-                                        required
-                                        style={{border:"2px solid  #002d62",borderRadius: "10px",marginLeft:'10px',width: '90%' }}
-                                    />
-                                </div>
-                            </div>
-
-                            <div className="row mb-3">
-                                <div className="col-md-6">
-                                    <input
-                                        type="text"
-                                        name="to"
-                                        className="form-control"
-                                        placeholder="To (Destination)"
-                                        value={formData.to}
-                                        onChange={handleChange}
-                                        required
-                                        style={{border:"2px solid  #002d62",borderRadius: "10px",marginLeft:'10px',width: '90%' }}
-                                    />
-                                </div>
-                                <div className="col-md-6">
-                                    <input
-                                        type="number"
-                                        name="quantity"
-                                        className="form-control"
-                                        placeholder="Quantity"
-                                        value={formData.quantity}
-                                        onChange={handleChange}
-                                        required
-                                        style={{border:"2px solid  #002d62",borderRadius: "10px",marginLeft:'10px',width: '90%' }}
-                                    />
-                                </div>
-                            </div>
-
-                           
-                            <button type="submit" className="btn btn-primary w-100">
-                                {editId !== null ? 'Update Transfer' : 'Add Transfer'}
-                            </button>
-                        </form>
-                    </div>
-
-                    
-                    <div className="table-responsive mt-4">
-                        <table className="table table-bordered">
-                            <thead className="table-dark">
-                                <tr>
-                                    <th>Transfer ID</th>
-                                    <th>Product</th>
-                                    <th>From</th>
-                                    <th>To</th>
-                                    <th>Quantity</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {transfers.length > 0 ? (
-                                    transfers.map((transfer) => (
-                                        <tr key={transfer.id}>
-                                            <td>{transfer.id}</td>
-                                            <td>{transfer.product}</td>
-                                            <td>{transfer.from}</td>
-                                            <td>{transfer.to}</td>
-                                            <td>{transfer.quantity}</td>
-                                            <td>
-                                                <button className="btn btn-success btn-sm me-2" onClick={() => handleEdit(transfer.id)}>
-                                                    Edit
-                                                </button>
-                                                <button className="btn btn-danger btn-sm" onClick={() => handleDelete(transfer.id)}>
-                                                    Delete
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    ))
-                                ) : (
-                                    <tr>
-                                        <td colSpan="7" className="text-center py-3">No transfers found.</td>
-                                    </tr>
-                                )}
-                            </tbody>
-                        </table>
-                    </div>
+        <form onSubmit={handleSubmit} style={{ padding: '20px' }}>
+            <div className="row mb-4">
+                <div className="col-md-6">
+                    <input
+                        type="text"
+                        name="product"
+                        className="form-control"
+                        placeholder="Product Name"
+                        value={formData.product}
+                        onChange={handleChange}
+                        required
+                        style={{ borderColor: "#002d62", borderRadius: "10px", width: '100%' }}
+                    />
                 </div>
+                <div className="col-md-6">
+                    <input
+                        type="text"
+                        name="from"
+                        className="form-control"
+                        placeholder="From (Source)"
+                        value={formData.from}
+                        onChange={handleChange}
+                        required
+                        style={{ borderColor: "#002d62", borderRadius: "10px", width: '100%' }}
+                    />
+                </div>
+            </div>
+
+            <div className="row mb-4">
+                <div className="col-md-6">
+                    <input
+                        type="text"
+                        name="to"
+                        className="form-control"
+                        placeholder="To (Destination)"
+                        value={formData.to}
+                        onChange={handleChange}
+                        required
+                        style={{ borderColor: "#002d62", borderRadius: "10px", width: '100%' }}
+                    />
+                </div>
+                <div className="col-md-6">
+                    <input
+                        type="number"
+                        name="quantity"
+                        className="form-control"
+                        placeholder="Quantity"
+                        value={formData.quantity}
+                        onChange={handleChange}
+                        required
+                        style={{ borderColor: "#002d62", borderRadius: "10px", width: '100%' }}
+                    />
+                </div>
+            </div>
+
+            <button type="submit" className="btn btn-primary w-100" style={{ padding: '10px', fontSize: '16px' }}>
+                {editId !== null ? 'Update Transfer' : 'Add Transfer'}
+            </button>
+        </form>
+    </div>
+
+    <div className="table-responsive mt-4">
+        <table className="table table-striped table-hover">
+            <thead className="table">
+                <tr>
+                    <th>Transfer ID</th>
+                    <th>Product</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Quantity</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {transfers.length > 0 ? (
+                    transfers.map((transfer) => (
+                        <tr key={transfer.id}>
+                            <td>{transfer.id}</td>
+                            <td>{transfer.product}</td>
+                            <td>{transfer.from}</td>
+                            <td>{transfer.to}</td>
+                            <td>{transfer.quantity}</td>
+                            <td>
+                                <button
+                                    className="btn btn-success btn-sm me-2"
+                                    onClick={() => handleEdit(transfer.id)}
+                                    style={{ padding: '5px 12px', fontSize: '14px' }}
+                                >
+                                    Edit
+                                </button>
+                                <button
+                                    className="btn btn-danger btn-sm"
+                                    onClick={() => handleDelete(transfer.id)}
+                                    style={{ padding: '5px 12px', fontSize: '14px' }}
+                                >
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                    ))
+                ) : (
+                    <tr>
+                        <td colSpan="6" className="text-center py-3">No transfers found.</td>
+                    </tr>
+                )}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div className="col-md-9 col-lg-10 p-4" style={{ marginLeft: '16.6667%', backgroundColor: '#F1F5F9' }}>
+    <div className="card shadow-sm" style={{ marginTop: '20px' }}>
+        <h1 className="text-center rounded-top" style={{ 
+            backgroundColor: '#205781', 
+            color: "white", 
+            padding: '10px 20px', 
+            fontSize: '24px', 
+            width: 'auto', 
+            margin: '0 auto', 
+            display: 'inline-block' 
+        }}>
+            Out of Stock Products
+        </h1>
+
+        <form onSubmit={handleSubmit} style={{ padding: '20px' }}>
+            <div className="row mb-4">
+                <div className="col-md-6">
+                    <input
+                        type="text"
+                        name="product"
+                        className="form-control"
+                        placeholder="Product Name"
+                        value={formData.product}
+                        onChange={handleChange}
+                        required
+                        style={{ borderColor: "#002d62", borderRadius: "10px", width: '100%' }}
+                    />
+                </div>
+                <div className="col-md-6">
+                    <input
+                        type="text"
+                        name="from"
+                        className="form-control"
+                        placeholder="From (Source)"
+                        value={formData.from}
+                        onChange={handleChange}
+                        required
+                        style={{ borderColor: "#002d62", borderRadius: "10px", width: '100%' }}
+                    />
+                </div>
+            </div>
+
+            <div className="row mb-4">
+                <div className="col-md-6">
+                    <input
+                        type="text"
+                        name="to"
+                        className="form-control"
+                        placeholder="To (Destination)"
+                        value={formData.to}
+                        onChange={handleChange}
+                        required
+                        style={{ borderColor: "#002d62", borderRadius: "10px", width: '100%' }}
+                    />
+                </div>
+                <div className="col-md-6">
+                    <input
+                        type="number"
+                        name="quantity"
+                        className="form-control"
+                        placeholder="Quantity"
+                        value={formData.quantity}
+                        onChange={handleChange}
+                        required
+                        style={{ borderColor: "#002d62", borderRadius: "10px", width: '100%' }}
+                    />
+                </div>
+            </div>
+
+            <button type="submit" className="btn btn-primary w-100" style={{ padding: '10px', fontSize: '16px' }}>
+                {editId !== null ? 'Update Transfer' : 'Add Transfer'}
+            </button>
+        </form>
+    </div>
+
+    <div className="mt-5">
+        <h3 className="text-center" style={{ backgroundColor: '#205781', color: 'white', padding: '10px' }}>
+            Recent Transfer Products
+        </h3>
+        <div className="table-responsive mt-4">
+            <table className="table table-striped table-hover">
+                <thead className="bg-primary text-white">
+                    <tr>
+                        <th>Transfer ID</th>
+                        <th>Product</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Quantity</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {transfers.length > 0 ? (
+                        transfers.map((transfer) => (
+                            <tr key={transfer.id}>
+                                <td>{transfer.id}</td>
+                                <td>{transfer.product}</td>
+                                <td>{transfer.from}</td>
+                                <td>{transfer.to}</td>
+                                <td>{transfer.quantity}</td>
+                                <td>
+                                    <button
+                                        className="btn btn-success btn-sm me-2"
+                                        onClick={() => handleEdit(transfer.id)}
+                                        style={{ padding: '5px 12px', fontSize: '14px' }}
+                                    >
+                                        Edit
+                                    </button>
+                                    <button
+                                        className="btn btn-danger btn-sm"
+                                        onClick={() => handleDelete(transfer.id)}
+                                        style={{ padding: '5px 12px', fontSize: '14px' }}
+                                    >
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+                        ))
+                    ) : (
+                        <tr>
+                            <td colSpan="6" className="text-center py-3">No transfers found.</td>
+                        </tr>
+                    )}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+                        
             </div>
         </div>
     );

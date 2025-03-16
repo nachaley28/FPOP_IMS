@@ -35,11 +35,11 @@ function Expiring() {
     const filteredProducts = getFilteredProducts();
 
     return (
-        <div className="d-flex flex-column min-vh-100" style={{ backgroundColor: 'white', backgroundImage: `url(/img/14.png)`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', fontFamily: "'Poppins', sans-serif" }}>
-         
+        <div className="d-flex flex-column" style={{ height: '100vh',fontFamily: 'Cambria, Cochin, Georgia, Times, serif',color: '#002d62'}}> 
+                    
             <nav className="text-white fixed-top" style={{ backgroundColor: '#E0F2F7', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)', border: '1px solid white', zIndex: 1 }}>
                 <div className="container-fluid">
-                    <img src="/img/fpop-logo.png" alt="Logo" width="120" height="auto" className="d-inline-block align-text-top" />
+                <img src="/img/fpop-logo.png" alt="Logo" width="70" height="70" className="d-inline-block align-text-top" />
                 </div>
             </nav>
 
@@ -81,9 +81,8 @@ function Expiring() {
                 </div>
 
                 
-                <main className="col-md-9 col-lg-10 ms-md-auto p-4" style={{ boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)', marginLeft: '16.6667%', backgroundColor: '#F9FAFB', minHeight: '85vh', fontFamily: 'Poppins, sans-serif', borderRadius: '12px', padding: '24px', color: '#333', transition: 'background-color 0.3s ease-in-out',gap: '100px'}}>
-                    <div className="container py-3">
-                    <h1 class="text-center  rounded shadow" style={{ backgroundColor:'#205781', color:"white", marginBottom: '20px'}}>Expiring Soon!</h1>
+                <main className="col-md-9 col-lg-10 ms-md-auto p-4" style={{ boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)', marginLeft: '16.6667%', backgroundColor: '#B3C8CF', minHeight: '85vh',  borderRadius: '12px', padding: '24px', color: '#333', transition: 'background-color 0.3s ease-in-out',gap: '100px'}}>
+                    <div className="container py-4">
 
                         <div className="row justify-content-center g-4">
                             {filteredProducts.length > 0 ? (

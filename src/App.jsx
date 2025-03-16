@@ -13,6 +13,7 @@ import OutStock from './pages/OutStock';
 import LowStock from './pages/LowStock';
 import Expiring from './pages/Expiring';
 import Request from './pages/Request';
+import Incoming from './pages/Incoming';
 
 
 
@@ -43,6 +44,7 @@ function RouteWithTransitions() {
           <Route path="/lowstock" element={<LowStock />} />
           <Route path="/expiring" element={<Expiring />} />
           <Route path="/request" element={<Request />} />
+          <Route path="/incoming" element={<Incoming />} />
 
           
 
