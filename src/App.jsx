@@ -4,18 +4,13 @@ import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-route
 import { motion, AnimatePresence } from 'framer-motion'; 
 import './App.css';
 import LandingPage from "./pages/Landing";
-import Home from "./pages/Home";
-import Products from "./pages/Products";
-import StockIn from './pages/Stockin'; 
-import Transfers from './pages/Transfers';
-import Audit from './pages/Audit';
-import OutStock from './pages/OutStock';
-import LowStock from './pages/LowStock';
-import Expiring from './pages/Expiring';
-import Request from './pages/Request';
-import Incoming from './pages/Incoming';
-
-
+import Home from "./pages/assistants/Home";
+import AssistantLayout from "./pages/assistants/AssistantLayout";
+import AdminLayout from "./pages/admin/AdminLayout";
+import Dashboard from "./pages/admin/dashboard";
+import Laboratory from "./pages/admin/labs";  
+import Reports from "./pages/admin/reports"; 
+import Inventory from "./pages/admin/inventory";  
 
 
 
@@ -24,7 +19,6 @@ function RouteWithTransitions() {
 
   return (
     <AnimatePresence>
-
       <motion.div
         key={location.pathname}  
         initial={{ opacity: 0 }} 
@@ -35,20 +29,25 @@ function RouteWithTransitions() {
       >
         <Routes location={location}>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/stockin" element={<StockIn />} />
-          <Route path="/transfers" element={<Transfers />} />
-          <Route path="/audit" element={<Audit />} />
-          <Route path="/outstock" element={<OutStock />} />
-          <Route path="/lowstock" element={<LowStock />} />
-          <Route path="/expiring" element={<Expiring />} />
-          <Route path="/request" element={<Request />} />
-          <Route path="/incoming" element={<Incoming />} />
 
-          
+          {/* /assistants */}
+          <Route path="/assistants" element={<AssistantLayout />}>
+            <Route index element={<Home />} />          
+          </Route>
 
-        </Routes>
+
+          {/* Admin Routes */}
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<Dashboard/>} />
+            <Route path="/admin/labs" element={<Laboratory />} />
+            <Route path="/admin/reports" element={<Reports />} />
+            <Route path="/admin/inventory" element={<Inventory />} />
+
+
+            </Route>
+
+           </Routes>
+        
       </motion.div>
     </AnimatePresence>
   );
