@@ -77,7 +77,7 @@ function OutStock() {
                                   </li>
                                 </ul>
                               </div>
-                     </div>
+            </div>
             
 
             <div className="d-flex flex-grow-1 mt-5">
