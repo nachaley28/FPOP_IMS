@@ -8,18 +8,24 @@ export default function Inventory() {
 
   useEffect(() => {
     const fetchInventory = async () => {
-      const combinedInventory = [
-        { id: 1, category: 'Computer', name: 'Dell OptiPlex 7090', lab: 'Chemistry Lab 1', specs: 'i7, 16GB RAM, 512GB SSD', quantity: 1, status: 'Operational' },
-        { id: 2, category: 'Computer', name: 'HP EliteDesk 800', lab: 'Physics Lab', specs: 'i5, 8GB RAM, 256GB SSD', quantity: 1, status: 'Damaged' },
-        { id: 3, category: 'Accessory', name: 'Projector', lab: 'Chemistry Lab 1', specs: '-', quantity: 2, status: 'Operational' },
-        { id: 4, category: 'Accessory', name: 'Whiteboard', lab: 'Physics Lab', specs: '-', quantity: 1, status: 'Repaired' },
-        { id: 5, category: 'Other', name: 'Microscope', lab: 'Chemistry Lab 1', specs: '-', quantity: 5, status: 'Operational' },
-        { id: 6, category: 'Other', name: 'Centrifuge', lab: 'Physics Lab', specs: '-', quantity: 2, status: 'Not Operational' },
-      ];
-      setInventory(combinedInventory);
+      
+      await fetch("http://127.0.0.1:5000/get_inventory")
+      .then(res => res.json())
+      .then(data => setInventory(data))
+      .catch(err => console.error("Error fetching dashboard data:", err));
+      // const combinedInventory = [
+      //   { id: 1, category: 'Computer', name: 'Dell OptiPlex 7090', lab: 'Chemistry Lab 1', specs: 'i7, 16GB RAM, 512GB SSD', quantity: 1, status: 'Operational' },
+      //   { id: 2, category: 'Computer', name: 'HP EliteDesk 800', lab: 'Physics Lab', specs: 'i5, 8GB RAM, 256GB SSD', quantity: 1, status: 'Damaged' },
+      //   { id: 3, category: 'Accessory', name: 'Projector', lab: 'Chemistry Lab 1', specs: '-', quantity: 2, status: 'Operational' },
+      //   { id: 4, category: 'Accessory', name: 'Whiteboard', lab: 'Physics Lab', specs: '-', quantity: 1, status: 'Repaired' },
+      //   { id: 5, category: 'Other', name: 'Microscope', lab: 'Chemistry Lab 1', specs: '-', quantity: 5, status: 'Operational' },
+      //   { id: 6, category: 'Other', name: 'Centrifuge', lab: 'Physics Lab', specs: '-', quantity: 2, status: 'Not Operational' },
+      // ];
     };
     fetchInventory();
   }, []);
+
+  console.log(inventory);
 
   const getStatusBadge = (status) => {
     switch (status) {
@@ -61,6 +67,7 @@ export default function Inventory() {
     ? inventory
     : inventory.filter(item => item.status === filterStatus);
 
+  console.log(inventory);
   return (
     <div className="container mt-5">
       <h2 className="mb-4 text-primary fw-bold">Combined Inventory Dashboard</h2>

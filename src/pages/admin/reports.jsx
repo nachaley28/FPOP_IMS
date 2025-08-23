@@ -8,39 +8,42 @@ export default function Reports() {
 
   useEffect(() => {
     const fetchReports = async () => {
-      const data = [
-        {
-          id: 1,
-          title: 'Weekly Lab Equipment Maintenance',
-          submittedBy: 'Alice Johnson',
-          role: 'Lab Assistant',
-          date: '2025-08-15T10:30:00',
-          content: 'Completed routine maintenance of microscopes and centrifuges in Chemistry Lab 1. All equipment functioning properly.',
-          remarks: 'Next maintenance scheduled on 2025-08-22.',
-          isRead: false
-        },
-        {
-          id: 2,
-          title: 'New Equipment Request',
-          submittedBy: 'Dr. Robert Smith',
-          role: 'Lab Adviser',
-          date: '2025-08-14T14:45:00',
-          content: 'Requested 3 high-resolution microscopes and additional lab benches for Molecular Biology Lab.',
-          remarks: 'Approval pending from administration.',
-          isRead: true
-        },
-        {
-          id: 3,
-          title: 'Safety Compliance Inspection',
-          submittedBy: 'Charlie Lee',
-          role: 'Lab Assistant',
-          date: '2025-08-16T09:15:00',
-          content: 'Conducted safety inspection for Physics Lab. All equipment compliant.',
-          remarks: 'Minor label updates required on chemical bottles.',
-          isRead: false
-        }
-      ];
-      setReports(data);
+      // const data = [
+      //   {
+      //     id: 1,
+      //     title: 'Weekly Lab Equipment Maintenance',
+      //     submittedBy: 'Alice Johnson',
+      //     role: 'Lab Assistant',
+      //     date: '2025-08-15T10:30:00',
+      //     content: 'Completed routine maintenance of microscopes and centrifuges in Chemistry Lab 1. All equipment functioning properly.',
+      //     remarks: 'Next maintenance scheduled on 2025-08-22.',
+      //     isRead: false
+      //   },
+      //   {
+      //     id: 2,
+      //     title: 'New Equipment Request',
+      //     submittedBy: 'Dr. Robert Smith',
+      //     role: 'Lab Adviser',
+      //     date: '2025-08-14T14:45:00',
+      //     content: 'Requested 3 high-resolution microscopes and additional lab benches for Molecular Biology Lab.',
+      //     remarks: 'Approval pending from administration.',
+      //     isRead: true
+      //   },
+      //   {
+      //     id: 3,
+      //     title: 'Safety Compliance Inspection',
+      //     submittedBy: 'Charlie Lee',
+      //     role: 'Lab Assistant',
+      //     date: '2025-08-16T09:15:00',
+      //     content: 'Conducted safety inspection for Physics Lab. All equipment compliant.',
+      //     remarks: 'Minor label updates required on chemical bottles.',
+      //     isRead: false
+      //   }
+      // ];
+
+      await fetch('http://127.0.0.1:5000/get_reports')
+      .then(res => res.json())
+      .then(data => setReports(data))
     };
 
     fetchReports();
