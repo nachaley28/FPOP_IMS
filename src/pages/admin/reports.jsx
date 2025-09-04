@@ -41,7 +41,10 @@ export default function Reports() {
       //   }
       // ];
 
-      await fetch('http://127.0.0.1:5000/get_reports')
+      await fetch('http://127.0.0.1:5000/get_reports', {
+        method: 'GET',
+        credentials: 'include',
+      })
       .then(res => res.json())
       .then(data => setReports(data))
     };
